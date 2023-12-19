@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+     <link rel="stylesheet" th:href="@{../css/styles.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="message" th:if="${param.error}">
+           Invalid Username or Password
+        </div>
+        <div class="message" th:if="${param.logout}">
+           Logout Successfuly
+        </div>
+        
+        <div>
+	        <span class = "en">English</span>
+	        <input type = "checkbox" id = "toggleCheckbox" class = "check">
+	        <span class = "cn"> 中文（简体）</span>
+        </div>
+        
+        <div class = "content contentEnglish">
+			<h1>English</h1>
+		</div>
+		<div class = "content contentChinese">
+			<h1>中文（简体）</h1>
+		</div>
+        
+        <div class = "content titleEnglish">
+			<h1>DXC Manager and User Login Page</h1>
+		</div>
+		
+		<div class = "content titleChinese">
+			<h1>DXC 经理和用户登录页面</h1>
+		</div>
+		
+        <img src = "../css/DXC_Technology_logo.png" alt = "DXC Logo" width = "420" height= "200">
+        <br>
+        <br>
+        <br>
+        <br>
+        <form 
+         th:action="@{/login}"
+         method="post">
+            
+            
+            <div class="form-group">
+                <label id = "username"for="username">Username / Email:</label>
+                <input  type="email" id="username" name="username" placeholder="Enter your username / email" required>
+            </div>
+            
+            
+            <div class="form-group">
+                <label id = "password" for="password">Password:</label>
+                <input  type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <input id = "login" type="submit" value="Login">
+        </form>
+        
+        <script>
+	        document
+	          .getElementById("toggleCheckbox")
+	          .addEventListener("change", function () {
+	            var contentEnglish = document.querySelector(
+	              ".content.contentEnglish"
+	            );
+	            var titleEnglish = document.querySelector(
+	              ".content.titleEnglish"
+	            );
+	            var contentChinese = document.querySelector(
+	              ".content.contentChinese"
+	            );
+	            var titleChinese = document.querySelector(
+	              ".content.titleChinese"
+	            );
+	            var formGroupChinese = document.querySelector(
+	              ".content.form-group-chinese"
+	            );
+	
+	            if (this.checked) {
+				  document.getElementsByName('username')[0].placeholder = '输入您的用户名/电子邮件';
+				  document.getElementsByName('password')[0].placeholder = '输入您的密码';
+				  document.getElementById("username").innerText = '户名/电子邮件'
+				  document.getElementById("password").innerText = '密码'
+				  document.getElementById("login").value = '登录';
+	              contentEnglish.style.display = "none";
+	              contentChinese.style.display = "block";
+	              titleEnglish.style.display = "none";
+	              titleChinese.style.display = "block";
+	              
+	            } else {
+				  document.getElementsByName('username')[0].placeholder = 'Enter your email/username';
+				  document.getElementsByName('password')[0].placeholder = 'Enter your password';
+				  document.getElementById('username').innerText = 'Username/Email';
+				  document.getElementById("password").innerText = 'Password';
+				  document.getElementById("login").value = 'Login';
+				  
+	              contentEnglish.style.display = "block";
+	              contentChinese.style.display = "none";
+	              titleEnglish.style.display = "block";
+	              titleChinese.style.display = "none";
+	            }
+	          });
+      </script>
+        
+    </div>
+</body>
+</html>
