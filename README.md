@@ -1,7 +1,7 @@
 # DXCSubmission
 
 ## Hi DXC, this is my submission for Java Developer assessment
-### Encoder and Decoder assignemnt: Encoder&Decoder 
+### Encoder and Decoder assignment: Encoder&Decoder 
 ### Login Application assignment: Login Application assignment
 ### User : User data base to store username and password
 <ol>
